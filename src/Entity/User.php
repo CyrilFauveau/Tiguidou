@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -32,6 +34,21 @@ class User implements UserInterface
      * @ORM\Column(type="string")
      */
     private $password;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $solde;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Bonus", inversedBy="user")
+     */
+    private $bonus;
+
+    public function __construct()
+    {
+        $this->bonus = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -104,5 +121,43 @@ class User implements UserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    public function getSolde(): ?int
+    {
+        return $this->solde;
+    }
+
+    public function setSolde(?int $solde): self
+    {
+        $this->solde = $solde;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Bonus[]
+     */
+    public function getBonus(): Collection
+    {
+        return $this->bonus;
+    }
+
+    public function addBonus(Bonus $bonus): self
+    {
+        if (!$this->bonus->contains($bonus)) {
+            $this->bonus[] = $bonus;
+        }
+
+        return $this;
+    }
+
+    public function removeBonus(Bonus $bonus): self
+    {
+        if ($this->bonus->contains($bonus)) {
+            $this->bonus->removeElement($bonus);
+        }
+
+        return $this;
     }
 }

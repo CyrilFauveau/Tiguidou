@@ -1,6 +1,6 @@
 <?php
 
-namespace ContainerUxsz9Bh;
+namespace ContainerFW0St2c;
 
 
 use Symfony\Component\DependencyInjection\Argument\RewindableGenerator;
@@ -861,8 +861,14 @@ class srcApp_KernelDevDebugContainer extends Container
         $a->setQuoteStrategy(new \Doctrine\ORM\Mapping\DefaultQuoteStrategy());
         $a->setEntityListenerResolver(new \Doctrine\Bundle\DoctrineBundle\Mapping\ContainerEntityListenerResolver($this));
         $a->setRepositoryFactory(new \Doctrine\Bundle\DoctrineBundle\Repository\ContainerRepositoryFactory(new \Symfony\Component\DependencyInjection\Argument\ServiceLocator($this->getService, [
+            'App\\Repository\\BonusRepository' => ['privates', 'App\\Repository\\BonusRepository', 'getBonusRepositoryService', false],
+            'App\\Repository\\QuestionsRepository' => ['privates', 'App\\Repository\\QuestionsRepository', 'getQuestionsRepositoryService', false],
+            'App\\Repository\\ThemesRepository' => ['privates', 'App\\Repository\\ThemesRepository', 'getThemesRepositoryService', false],
             'App\\Repository\\UserRepository' => ['privates', 'App\\Repository\\UserRepository', 'getUserRepositoryService', false],
         ], [
+            'App\\Repository\\BonusRepository' => '?',
+            'App\\Repository\\QuestionsRepository' => '?',
+            'App\\Repository\\ThemesRepository' => '?',
             'App\\Repository\\UserRepository' => '?',
         ])));
 
@@ -987,6 +993,9 @@ class srcApp_KernelDevDebugContainer extends Container
             return ($this->privates['data_collector.request'] ?? ($this->privates['data_collector.request'] = new \Symfony\Component\HttpKernel\DataCollector\RequestDataCollector()));
         }, 1 => 'onKernelResponse'], 0);
         $instance->addListener('kernel.request', [0 => function () {
+            return ($this->privates['debug.debug_handlers_listener'] ?? $this->getDebug_DebugHandlersListenerService());
+        }, 1 => 'configure'], 2048);
+        $instance->addListener('console.command', [0 => function () {
             return ($this->privates['debug.debug_handlers_listener'] ?? $this->getDebug_DebugHandlersListenerService());
         }, 1 => 'configure'], 2048);
         $instance->addListener('kernel.request', [0 => function () {
@@ -1695,6 +1704,57 @@ class srcApp_KernelDevDebugContainer extends Container
     protected function get_LegacyResolveControllerNameSubscriberService()
     {
         return $this->privates['.legacy_resolve_controller_name_subscriber'] = new \Symfony\Bundle\FrameworkBundle\EventListener\ResolveControllerNameSubscriber(($this->privates['.legacy_controller_name_converter'] ?? ($this->privates['.legacy_controller_name_converter'] = new \Symfony\Bundle\FrameworkBundle\Controller\ControllerNameParser(($this->services['kernel'] ?? $this->get('kernel', 1)), false))), false);
+    }
+
+    /**
+     * Gets the private 'App\Repository\BonusRepository' shared autowired service.
+     *
+     * @return \App\Repository\BonusRepository
+     */
+    protected function getBonusRepositoryService()
+    {
+        include_once \dirname(__DIR__, 4).'\\vendor\\doctrine\\persistence\\lib\\Doctrine\\Persistence\\ObjectRepository.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\doctrine\\collections\\lib\\Doctrine\\Common\\Collections\\Selectable.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\doctrine\\orm\\lib\\Doctrine\\ORM\\EntityRepository.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\doctrine\\doctrine-bundle\\Repository\\ServiceEntityRepositoryInterface.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\doctrine\\doctrine-bundle\\Repository\\ServiceEntityRepository.php';
+        include_once \dirname(__DIR__, 4).'\\src\\Repository\\BonusRepository.php';
+
+        return $this->privates['App\\Repository\\BonusRepository'] = new \App\Repository\BonusRepository(($this->services['doctrine'] ?? $this->getDoctrineService()));
+    }
+
+    /**
+     * Gets the private 'App\Repository\QuestionsRepository' shared autowired service.
+     *
+     * @return \App\Repository\QuestionsRepository
+     */
+    protected function getQuestionsRepositoryService()
+    {
+        include_once \dirname(__DIR__, 4).'\\vendor\\doctrine\\persistence\\lib\\Doctrine\\Persistence\\ObjectRepository.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\doctrine\\collections\\lib\\Doctrine\\Common\\Collections\\Selectable.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\doctrine\\orm\\lib\\Doctrine\\ORM\\EntityRepository.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\doctrine\\doctrine-bundle\\Repository\\ServiceEntityRepositoryInterface.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\doctrine\\doctrine-bundle\\Repository\\ServiceEntityRepository.php';
+        include_once \dirname(__DIR__, 4).'\\src\\Repository\\QuestionsRepository.php';
+
+        return $this->privates['App\\Repository\\QuestionsRepository'] = new \App\Repository\QuestionsRepository(($this->services['doctrine'] ?? $this->getDoctrineService()));
+    }
+
+    /**
+     * Gets the private 'App\Repository\ThemesRepository' shared autowired service.
+     *
+     * @return \App\Repository\ThemesRepository
+     */
+    protected function getThemesRepositoryService()
+    {
+        include_once \dirname(__DIR__, 4).'\\vendor\\doctrine\\persistence\\lib\\Doctrine\\Persistence\\ObjectRepository.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\doctrine\\collections\\lib\\Doctrine\\Common\\Collections\\Selectable.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\doctrine\\orm\\lib\\Doctrine\\ORM\\EntityRepository.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\doctrine\\doctrine-bundle\\Repository\\ServiceEntityRepositoryInterface.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\doctrine\\doctrine-bundle\\Repository\\ServiceEntityRepository.php';
+        include_once \dirname(__DIR__, 4).'\\src\\Repository\\ThemesRepository.php';
+
+        return $this->privates['App\\Repository\\ThemesRepository'] = new \App\Repository\ThemesRepository(($this->services['doctrine'] ?? $this->getDoctrineService()));
     }
 
     /**
