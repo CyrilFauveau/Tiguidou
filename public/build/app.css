@@ -1,0 +1,37 @@
+body {
+    background: url('/build/images/background.png') no-repeat center;
+    background-size: cover;
+    background-attachment: fixed;
+    margin: 0;
+}
+h1, h2, h3, h4, h5, h6 {
+    margin: 0
+}
+p {
+    margin: 0;
+}
+ul, ol {
+    margin: 0;
+    padding: 0;
+}
+figure {
+    margin: 0;
+}
+img {
+    max-width: 100%;
+}
+
+
+
+/**************************************** HEADER ****************************************/
+.block_header {
+    padding: 3rem 1rem;
+}
+.block_caribou {
+    position: absolute;
+    width: 40%;
+    bottom: .3rem;
+    right: 1rem;
+}
+
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vYXBwLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLDJCQUEyQjtJQUMzQixTQUFTO0FBQ2I7QUFDQTtJQUNJO0FBQ0o7QUFDQTtJQUNJLFNBQVM7QUFDYjtBQUNBO0lBQ0ksU0FBUztJQUNULFVBQVU7QUFDZDtBQUNBO0lBQ0ksZUFBZTtBQUNuQiIsImZpbGUiOiJhcHAuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiYm9keSB7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogbGlnaHRncmF5O1xuICAgIG1hcmdpbjogMDtcbn1cbmgxLCBoMiwgaDMsIGg0LCBoNSwgaDYge1xuICAgIG1hcmdpbjogMFxufVxucCB7XG4gICAgbWFyZ2luOiAwO1xufVxudWwsIG9sIHtcbiAgICBtYXJnaW46IDA7XG4gICAgcGFkZGluZzogMDtcbn1cbmltZyB7XG4gICAgbWF4LXdpZHRoOiAxMDAlO1xufVxuIl0sInNvdXJjZVJvb3QiOiIifQ==*/
