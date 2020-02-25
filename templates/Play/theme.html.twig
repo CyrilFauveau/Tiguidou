@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+    <p>Choix du thème</p>
+    <ul>
+        {% for theme in theme %}
+            <li>
+                <a href="{{ url('play_start', {"id": theme.id}) }}">{{ theme.name }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}

@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -22,10 +23,18 @@ class Themes
     private $name;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Questions", inversedBy="theme")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\OneToMany(targetEntity="App\Entity\Questions", mappedBy="theme")
      */
     private $question;
+
+    /**
+     * Themes constructor
+     */
+    public function __construct()
+    {
+        $this->question = new ArrayCollection();
+    }
+
 
     public function getId(): ?int
     {

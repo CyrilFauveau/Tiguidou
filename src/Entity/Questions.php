@@ -23,20 +23,24 @@ class Questions
      */
     private $title;
 
-    /**
-     * @ORM\Column(type="array")
-     */
-    private $otherAnswers = [];
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Themes", mappedBy="question", orphanRemoval=true)
+     * @ORM\ManyToOne(targetEntity="App\Entity\Themes", inversedBy="question",)
+     * @ORM\JoinColumn( name="theme_id", referencedColumnName="id")
      */
     private $theme;
 
-    public function __construct()
-    {
-        $this->theme = new ArrayCollection();
-    }
+    /**
+     * @ORM\Column(type="string", length=150)
+     */
+    private $correctAnswer;
+
+    /**
+     * @var array
+     * @ORM\Column(type="json")
+     */
+    private $otherAnswer = [];
+
 
     public function getId(): ?int
     {
@@ -55,17 +59,6 @@ class Questions
         return $this;
     }
 
-    public function getOtherAnswers(): ?array
-    {
-        return $this->otherAnswers;
-    }
-
-    public function setOtherAnswers(array $otherAnswers): self
-    {
-        $this->otherAnswers = $otherAnswers;
-
-        return $this;
-    }
 
     /**
      * @return Collection|Themes[]
@@ -94,6 +87,30 @@ class Questions
                 $theme->setQuestion(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getCorrectAnswer(): ?string
+    {
+        return $this->correctAnswer;
+    }
+
+    public function setCorrectAnswer(string $correctAnswer): self
+    {
+        $this->correctAnswer = $correctAnswer;
+
+        return $this;
+    }
+
+    public function getOtherAnswer(): ?array
+    {
+        return $this->otherAnswer;
+    }
+
+    public function setOtherAnswer(array $otherAnswer): self
+    {
+        $this->otherAnswer = $otherAnswer;
 
         return $this;
     }

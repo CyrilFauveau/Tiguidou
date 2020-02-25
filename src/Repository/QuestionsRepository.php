@@ -19,6 +19,17 @@ class QuestionsRepository extends ServiceEntityRepository
         parent::__construct($registry, Questions::class);
     }
 
+    public function FindByTheme ($theme){
+        $queryBuilder = $this->createQueryBuilder('q')
+            ->innerJoin('q.theme', 't')
+            ->where('q.theme like :theme')
+            ->setParameter('theme', "%" . $theme->getTheme() . "%")
+            ->setMaxResults(10);
+
+
+        return $queryBuilder->getQuery()->getResult();
+    }
+
     // /**
     //  * @return Questions[] Returns an array of Questions objects
     //  */
