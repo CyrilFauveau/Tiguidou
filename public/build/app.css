@@ -27,11 +27,31 @@ img {
 .block_header {
     padding: 3rem 1rem;
 }
-.block_caribou {
+.template_planche {
+    position: relative;
+}
+.template_planche .inner {
     position: absolute;
-    width: 40%;
-    bottom: .3rem;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    padding: .5rem 1rem;
+}
+
+.block_caribou {
+    position: relative;
+}
+.caribou {
+    position: absolute;
     right: 1rem;
+    bottom: .3rem;
+    width: 40%;
+}
+
+
+.block_main {
+    padding: 0 2rem 10rem;
 }
 
 /*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vYXBwLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLDJCQUEyQjtJQUMzQixTQUFTO0FBQ2I7QUFDQTtJQUNJO0FBQ0o7QUFDQTtJQUNJLFNBQVM7QUFDYjtBQUNBO0lBQ0ksU0FBUztJQUNULFVBQVU7QUFDZDtBQUNBO0lBQ0ksZUFBZTtBQUNuQiIsImZpbGUiOiJhcHAuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiYm9keSB7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogbGlnaHRncmF5O1xuICAgIG1hcmdpbjogMDtcbn1cbmgxLCBoMiwgaDMsIGg0LCBoNSwgaDYge1xuICAgIG1hcmdpbjogMFxufVxucCB7XG4gICAgbWFyZ2luOiAwO1xufVxudWwsIG9sIHtcbiAgICBtYXJnaW46IDA7XG4gICAgcGFkZGluZzogMDtcbn1cbmltZyB7XG4gICAgbWF4LXdpZHRoOiAxMDAlO1xufVxuIl0sInNvdXJjZVJvb3QiOiIifQ==*/

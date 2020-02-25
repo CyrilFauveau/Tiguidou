@@ -7,7 +7,26 @@
     </head>
     <body>
 
-        {% block body %}{% endblock %}
+        <header class="block_header">
+            <figure class="block_logo">
+                <img class="image_logo" src="{{ asset('/build/images/logo.png') }}" alt="logo tiguidou quizz">
+            </figure>
+        </header>
+
+        <main class="block_main">
+            <figure class="template_planche">
+                <img src="{{ asset('/build/images/planche.png') }}" alt="">
+                <div class="inner">
+                    {% block body %}{% endblock %}
+                </div>
+            </figure>
+        </main>
+
+        <div class="block_caribou">
+            <figure class="caribou">
+                <img src="{{ asset('/build/images/caribou.png') }}" alt="caribou tiguidou">
+            </figure>
+        </div>
 
         {% block javascripts %}
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
