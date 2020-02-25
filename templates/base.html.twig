@@ -15,11 +15,20 @@
             </figure>
         </header>
 
-        <figure class="block_caribou">
-            <img src="{{ asset('/build/images/caribou.png') }}" alt="caribou tiguidou">
-        </figure>
+        <main class="block_main">
+            <figure class="template_planche">
+                <img src="{{ asset('/build/images/planche.png') }}" alt="">
+                <div class="inner">
+                    {% block body %}{% endblock %}
+                </div>
+            </figure>
+        </main>
 
-        {% block body %}{% endblock %}
+        <div class="block_caribou">
+            <figure class="caribou">
+                <img src="{{ asset('/build/images/caribou.png') }}" alt="caribou tiguidou">
+            </figure>
+        </div>
 
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
