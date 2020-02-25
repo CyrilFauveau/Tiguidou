@@ -19,6 +19,11 @@ class BonusRepository extends ServiceEntityRepository
         parent::__construct($registry, Bonus::class);
     }
 
+    public function getBonus(){
+        $queryBuilder = $this->createQueryBuilder('b');
+            return $queryBuilder->getQuery()->getResult();
+    }
+
     // /**
     //  * @return Bonus[] Returns an array of Bonus objects
     //  */

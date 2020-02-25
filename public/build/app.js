@@ -33,7 +33,18 @@ __webpack_require__.r(__webpack_exports__);
 // import $ from 'jquery';
 
 // console.log('Hello Webpack Encore! Edit me in assets/js/app.js');
-
+        $(document).ready(function(){
+            $('#button-buy').click(function(){
+                var clickBtnValue = $(this).val();
+                var ajaxurl = 'shop',
+                    url = '{{path('shop')}}'
+                    data =  {'action': clickBtnValue};
+                $.post( data, function (response) {
+                    // Response div goes here.
+                    alert("action performed successfully");
+                });
+            });
+        });
 /***/ })
 
 },[["./assets/js/app.js","runtime"]]]);

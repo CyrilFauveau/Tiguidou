@@ -43,9 +43,16 @@ class Bonus
      */
     private $user;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Quantity", mappedBy="bonus", orphanRemoval=true)
+     */
+    private $quantity;
+
+
     public function __construct()
     {
         $this->user = new ArrayCollection();
+        $this->quantity = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -128,4 +135,36 @@ class Bonus
 
         return $this;
     }
+
+    /**
+     * @return Collection|Quantity[]
+     */
+    public function getQuantity(): Collection
+    {
+        return $this->quantity;
+    }
+
+    public function addQuantity(Quantity $quantity): self
+    {
+        if (!$this->quantity->contains($quantity)) {
+            $this->quantity[] = $quantity;
+            $quantity->setBonus($this);
+        }
+
+        return $this;
+    }
+
+    public function removeQuantity(Quantity $quantity): self
+    {
+        if ($this->quantity->contains($quantity)) {
+            $this->quantity->removeElement($quantity);
+            // set the owning side to null (unless already changed)
+            if ($quantity->getBonus() === $this) {
+                $quantity->setBonus(null);
+            }
+        }
+
+        return $this;
+    }
+
 }
