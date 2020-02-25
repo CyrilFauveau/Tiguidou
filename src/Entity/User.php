@@ -56,9 +56,15 @@ class User implements UserInterface
      */
     private $bonus;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Quantity", mappedBy="user", orphanRemoval=true)
+     */
+    private $quantity;
+
     public function __construct()
     {
         $this->bonus = new ArrayCollection();
+        $this->quantity = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -171,4 +177,36 @@ class User implements UserInterface
 
         return $this;
     }
+
+    /**
+     * @return Collection|Quantity[]
+     */
+    public function getQuantity(): Collection
+    {
+        return $this->quantity;
+    }
+
+    public function addQuantity(Quantity $quantity): self
+    {
+        if (!$this->quantity->contains($quantity)) {
+            $this->quantity[] = $quantity;
+            $quantity->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeQuantity(Quantity $quantity): self
+    {
+        if ($this->quantity->contains($quantity)) {
+            $this->quantity->removeElement($quantity);
+            // set the owning side to null (unless already changed)
+            if ($quantity->getUser() === $this) {
+                $quantity->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
 }
