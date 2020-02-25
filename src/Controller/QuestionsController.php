@@ -51,7 +51,7 @@ class QuestionsController extends AbstractController
     }
 
 /**
- * @Route("play/theme/{id}/game", name="play_game", methods={"GET"})
+ * @Route("play/{id}", name="play_game", methods={"GET"})
  *
  * @param Request $request
  * @param EntityManagerInterface $entityManager
