@@ -2,15 +2,17 @@
 
 {% block title %}Log in!{% endblock %}
 
+{% block body_header %}{% endblock %}
+
 {% block body %}
     <div class="block_login">
 
         <form method="post">
         <h1 class="h3 mb-3 font-weight-normal"></h1>
 
-        <label for="inputUsername">Username</label>
+        <label for="inputUsername">Pseudo :</label>
         <input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control" required autofocus>
-        <label for="inputPassword">Password</label>
+        <label for="inputPassword">Mot de passe :</label>
         <input type="password" name="password" id="inputPassword" class="form-control" required>
 
 
@@ -27,8 +29,8 @@
             </div>
         #}
 
-        <button class="btn btn-lg btn-primary" type="submit">
-            Se connecter
+        <button class="btn_connection btn btn-lg btn-primary" type="submit">
+            <img src="{{ asset('/build/images/okButton.png') }}" alt="">
         </button>
         </form>
 

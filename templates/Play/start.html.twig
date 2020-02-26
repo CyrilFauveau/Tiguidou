@@ -1,5 +1,25 @@
 {% extends 'base.html.twig' %}
+
 {% block body %}
-<p>explication</p>
-<a href="{{ url('play_game', {"id": themes}) }}">Commencer</a>
+    <div class="block_start">
+
+        <div class="second_header">
+            <figure class="image"><img src="{{ asset('/build/images/retour.png') }}" alt=""></figure>
+            <h2 class="h2_title">Jouer :</h2>
+        </div>
+
+        <p class="explanation">
+            Le quizz va commencer !<br>
+            Êtes-vous prêts ?
+        </p>
+
+        <figure class="caribou">
+            <img src="{{ asset('/build/images/caribou.png') }}" alt="">
+        </figure>
+
+        <a class="btn_start" href="{{ url('play_game', {"id": themes}) }}">
+            <img src="{{ asset('/build/images/startButton.png') }}" alt="">
+        </a>
+
+    </div>
 {% endblock %}

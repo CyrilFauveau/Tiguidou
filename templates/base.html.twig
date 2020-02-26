@@ -20,6 +20,40 @@
             <figure class="template_planche">
                 <img src="{{ asset('/build/images/planche.png') }}" alt="">
                 <div class="inner">
+                    {% block body_header %}
+                        <div class="header">
+                            <figure class="left logo">
+                                <img src="{{ asset('/build/images/accueilButton.png') }}" alt="accueil">
+                            </figure>
+
+                            <div class="center">
+                                <div class="block_bonus">
+                                    <span class="number">20</span>
+                                    <figure class="image"><img src="{{ asset('/build/images/point.png') }}" alt=""></figure>
+                                </div>
+
+                                <div class="block_bonus">
+                                    <span class="number">03</span>
+                                    <figure class="image"><img src="{{ asset('/build/images/erableSirop.png') }}" alt=""></figure>
+                                </div>
+
+                                <div class="block_bonus">
+                                    <span class="number">12</span>
+                                    <figure class="image"><img src="{{ asset('/build/images/indice.png') }}" alt=""></figure>
+                                </div>
+
+                                <div class="block_bonus">
+                                    <span class="number">01</span>
+                                    <figure class="image"><img src="{{ asset('/build/images/boxMystere.png') }}" alt=""></figure>
+                                </div>
+                            </div>
+
+                            <figure class="right logo">
+                                <img src="{{ asset('/build/images/classement_logo.png') }}" alt="classement">
+                            </figure>
+                        </div>
+                    {% endblock %}
+
                     {% block body %}{% endblock %}
                 </div>
             </figure>

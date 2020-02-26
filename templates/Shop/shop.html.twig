@@ -1,23 +1,29 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<h2 class="h2_title">Bienvenue dans la boutique</h2>
+    <div class="block_shop">
 
-    <div class="items">
-        {% for label, messages in app.flashes %}
-            {% for message in messages  %}
-                <div class="alert-{{ label }}">{{ message }}</div>
+        <div class="second_header">
+            <figure class="image"><img src="{{ asset('/build/images/retour.png') }}" alt=""></figure>
+            <h2 class="h2_title">Bienvenue dans<br> la boutique</h2>
+        </div>
+
+        <div class="items">
+            {% for label, messages in app.flashes %}
+                {% for message in messages  %}
+                    <div class="alert-{{ label }}">{{ message }}</div>
+                {% endfor %}
             {% endfor %}
-        {% endfor %}
-        {% for bonus in ShopBonus %}
-            <div class="item-{{ bonus.id }}">
-                <div class="description">
-                    <p>{{ bonus.price }}</p>
+            {% for bonus in ShopBonus %}
+                <div class="item-{{ bonus.id }}">
+                    <div class="description">
+                        <p>{{ bonus.price }}</p>
+                    </div>
+                    <h3>{{ bonus.name }}</h3>
+                    <a href="{{ url('shop', {"bonusID": bonus.id}) }}">ACHETER</a>
                 </div>
-                <h3>{{ bonus.name }}</h3>
-                <a href="{{ url('shop', {"bonusID": bonus.id}) }}">ACHETER</a>
-            </div>
-        {% endfor %}
-    </div>
+            {% endfor %}
+        </div>
 
+    </div>
 {% endblock %}
