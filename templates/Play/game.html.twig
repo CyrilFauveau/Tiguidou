@@ -1,1 +1,18 @@
 {% extends 'base.html.twig' %}
+
+{% block body %}
+    {% for question in questions %}
+        {{ question.title }}
+    {% endfor %}
+
+        {{ questions.title }}
+    {% for label, messages in app.flashes %}
+    {% for message in messages  %}
+        <div class="alert-{{ label }}">{{ message }}</div>
+    {% endfor %}
+    {% endfor %}
+    <div class="formulaire">
+        {{ form(form) }}
+
+    </div>
+{% endblock %}

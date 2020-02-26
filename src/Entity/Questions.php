@@ -35,11 +35,16 @@ class Questions
      */
     private $correctAnswer;
 
+
     /**
-     * @var array
-     * @ORM\Column(type="json")
+     * @ORM\OneToMany(targetEntity="App\Entity\Answer", mappedBy="answer", orphanRemoval=true)
      */
-    private $otherAnswer = [];
+    private $answer;
+
+    public function __construct()
+    {
+        $this->answer = new ArrayCollection();
+    }
 
 
     public function getId(): ?int
@@ -103,15 +108,36 @@ class Questions
         return $this;
     }
 
-    public function getOtherAnswer(): ?array
+
+    /**
+     * @return Collection|Answer[]
+     */
+    public function getAnswer(): Collection
     {
-        return $this->otherAnswer;
+        return $this->answer;
     }
 
-    public function setOtherAnswer(array $otherAnswer): self
+    public function addAnswer(Answer $answer): self
     {
-        $this->otherAnswer = $otherAnswer;
+        if (!$this->answer->contains($answer)) {
+            $this->answer[] = $answer;
+            $answer->setAnswer($this);
+        }
 
         return $this;
     }
+
+    public function removeAnswer(Answer $answer): self
+    {
+        if ($this->answer->contains($answer)) {
+            $this->answer->removeElement($answer);
+            // set the owning side to null (unless already changed)
+            if ($answer->getAnswer() === $this) {
+                $answer->setAnswer(null);
+            }
+        }
+
+        return $this;
+    }
+
 }
