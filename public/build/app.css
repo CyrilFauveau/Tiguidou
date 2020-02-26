@@ -4,6 +4,11 @@ body {
     background-attachment: fixed;
     margin: 0;
 }
+* {
+    font-family: Shadows Into, serif;
+    font-weight: normal;
+    color: #56423E;
+}
 h1, h2, h3, h4, h5, h6 {
     margin: 0
 }
@@ -23,15 +28,13 @@ img {
 
 
 
-/**************************************** HEADER ****************************************/
+/**************************************** TEMPLATE ****************************************/
 .block_header {
     padding: 3rem 1rem;
 }
-
 .block_main {
     padding: 0 2rem 10rem;
 }
-
 .block_main .template_planche {
     position: relative;
 }
@@ -43,7 +46,6 @@ img {
     bottom: 0;
     padding: .5rem 1rem;
 }
-
 .block_caribou {
     position: relative;
 }
@@ -55,11 +57,128 @@ img {
 }
 
 
+
+.block_main .header {
+    display: flex;
+    justify-content: space-between;
+}
+.block_main .header .logo {
+    width: 20%;
+    margin-top: auto;
+}
+.block_main .header .logo.left {
+    width: 30%;
+}
+.block_main .header .center {
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+}
+.block_main .header .block_bonus {
+    width: 25%;
+    text-align: center;
+}
+.block_main .header .block_bonus .number {
+    color: #CEB209;
+    font-weight: normal;
+    font-size: 1.2rem;
+}
+.block_main .header .block_bonus .image {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;
+    height: 50%;
+    margin: auto;
+}
+
+
+
+/**************************************** LOGIN ****************************************/
 .block_login input,
 .block_login label {
     display: block;
+}
+.block_login label {
+    font-size: 1.3rem;
+    font-weight: bold;
+    text-align: center;
+    margin: 3rem 0 0;
+}
+.block_login input {
+    width: 60%;
+    background: none;
+    outline: none;
+    border: none;
+    font-size: 1.2rem;
+    border-bottom: 3px solid #56423E;
+    margin: .5rem auto;
+    padding: .5rem 1rem;
+}
+.block_login .btn_connection {
+    display: block;
+    width: 40%;
+    background: none;
+    outline: none;
+    border: none;
+    margin: 2rem auto 0;
+}
+
+.block_login.registration input {
+    margin: 0 auto;
+}
+.block_login.registration label {
+    margin-top: 1.2rem;
+}
+
+
+/**************************************** SHOP ****************************************/
+.second_header .image {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 20%;
+}
+.second_header {
+    position: relative;
+}
+.second_header .h2_title {
+    text-align: center;
+    color: #CEB209;
+    margin-left: 1rem;
+}
+
+
+
+/**************************************** START GAME ****************************************/
+.block_start .explanation {
+    font-weight: bold;
     text-align: center;
 }
+.block_start .caribou {
+    width: 40%;
+    margin: 1.5rem auto;
+}
+.block_start .btn_start {
+    display: block;
+    width: 50%;
+    margin: 0 auto;
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 
