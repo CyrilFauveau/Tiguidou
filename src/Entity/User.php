@@ -66,10 +66,22 @@ class User implements UserInterface
      */
     private $score;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Classement", mappedBy="user", orphanRemoval=true)
+     */
+    private $classement;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Log", mappedBy="user", orphanRemoval=true)
+     */
+    private $log;
+
     public function __construct()
     {
         $this->bonus = new ArrayCollection();
         $this->quantity = new ArrayCollection();
+        $this->classement = new ArrayCollection();
+        $this->log = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -222,6 +234,68 @@ class User implements UserInterface
     public function setScore(?int $score): self
     {
         $this->score = $score;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Classement[]
+     */
+    public function getClassement(): Collection
+    {
+        return $this->classement;
+    }
+
+    public function addClassement(Classement $classement): self
+    {
+        if (!$this->classement->contains($classement)) {
+            $this->classement[] = $classement;
+            $classement->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeClassement(Classement $classement): self
+    {
+        if ($this->classement->contains($classement)) {
+            $this->classement->removeElement($classement);
+            // set the owning side to null (unless already changed)
+            if ($classement->getUser() === $this) {
+                $classement->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Log[]
+     */
+    public function getLog(): Collection
+    {
+        return $this->log;
+    }
+
+    public function addLog(Log $log): self
+    {
+        if (!$this->log->contains($log)) {
+            $this->log[] = $log;
+            $log->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLog(Log $log): self
+    {
+        if ($this->log->contains($log)) {
+            $this->log->removeElement($log);
+            // set the owning side to null (unless already changed)
+            if ($log->getUser() === $this) {
+                $log->setUser(null);
+            }
+        }
 
         return $this;
     }

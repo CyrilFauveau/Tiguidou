@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <ul>
+        {% for rank in classement %}
+            <li> {{ rank.user.username }}</li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}
