@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>{% block title %}Welcome!{% endblock %}</title>
+        <link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light&display=swap" rel="stylesheet">
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
@@ -23,7 +24,7 @@
                     {% block body_header %}
                         <div class="header">
                             <figure class="left logo">
-                                <img src="{{ asset('/build/images/accueilButton.png') }}" alt="accueil">
+                                <a href="/"><img src="{{ asset('/build/images/accueilButton.png') }}" alt=""></a>
                             </figure>
 
                             <div class="center">
@@ -59,10 +60,11 @@
             </figure>
         </main>
 
-        <div class="block_caribou">
+        <div class="block_footer">
             <figure class="caribou">
                 <img src="{{ asset('/build/images/caribou.png') }}" alt="caribou tiguidou">
             </figure>
+            {% block timer_solo %}{% endblock %}
         </div>
 
         {% block javascripts %}

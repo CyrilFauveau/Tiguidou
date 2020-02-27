@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Shadows+Into+Light&display=swap');
+
 body {
     background: url('/build/images/background.png') no-repeat center;
     background-size: cover;
@@ -5,7 +7,7 @@ body {
     margin: 0;
 }
 * {
-    font-family: Shadows Into, serif;
+    font-family: 'Shadow Into Light', serif;
     font-weight: normal;
     color: #56423E;
 }
@@ -16,6 +18,7 @@ p {
     margin: 0;
 }
 ul, ol {
+    list-style-type: none;
     margin: 0;
     padding: 0;
 }
@@ -33,7 +36,7 @@ img {
     padding: 3rem 1rem;
 }
 .block_main {
-    padding: 0 2rem 10rem;
+    padding: 0 1rem 2rem;
 }
 .block_main .template_planche {
     position: relative;
@@ -46,14 +49,24 @@ img {
     bottom: 0;
     padding: .5rem 1rem;
 }
-.block_caribou {
+.block_footer {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+    padding: 0 1rem;
+}
+.block_footer .caribou,
+.block_footer .timer_solo {
+    width: 40%;
+}
+.block_footer .timer_solo {
     position: relative;
 }
-.block_caribou .caribou {
+.block_footer .timer_solo .timer {
     position: absolute;
-    right: 1rem;
-    bottom: .3rem;
-    width: 40%;
+    top: 0;
+    left: 0;
+    padding: .5rem 1rem 1rem;
 }
 
 
@@ -94,6 +107,26 @@ img {
 
 
 
+.second_header .image {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 20%;
+}
+.second_header {
+    position: relative;
+}
+.second_header .h2_title {
+    text-align: center;
+    color: #CEB209;
+    margin-left: 1rem;
+}
+
+
 /**************************************** LOGIN ****************************************/
 .block_login input,
 .block_login label {
@@ -103,7 +136,7 @@ img {
     font-size: 1.3rem;
     font-weight: bold;
     text-align: center;
-    margin: 3rem 0 0;
+    margin: 4rem 0 0;
 }
 .block_login input {
     width: 60%;
@@ -128,28 +161,57 @@ img {
     margin: 0 auto;
 }
 .block_login.registration label {
-    margin-top: 1.2rem;
+    margin-top: 1.5rem;
 }
 
 
 /**************************************** SHOP ****************************************/
-.second_header .image {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
+.block_shop .items {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 20%;
+    justify-content: space-between;
+    flex-flow: wrap;
+    padding: 1rem 3rem;
 }
-.second_header {
+.block_shop .items .item {
     position: relative;
+    width: 45%;
 }
-.second_header .h2_title {
-    text-align: center;
+.block_shop .item .left {
+    position: absolute;
+    left: .4rem;
+    top: .4rem;
+    display: flex;
+    justify-content: space-between;
+    width: 35%;
+}
+.block_shop .item .left .price {
     color: #CEB209;
-    margin-left: 1rem;
+}
+.block_shop .item .left figure {
+    width: 35%;
+}
+.block_shop .item .right {
+    position: absolute;
+    top: .5rem;
+    right: .5rem;
+    width: 15%;
+}
+.block_shop .item .image {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    padding: 1.5rem 1.2rem 1.2rem;
+}
+.block_shop .item .name {
+    text-align: center;
+    text-transform: capitalize;
+    white-space: nowrap;
+}
+.block_shop .item .btn_buy {
+    display: block;
+    margin-bottom: 1rem;
 }
 
 
@@ -171,8 +233,31 @@ img {
 
 
 
-
-
+/**************************************** THEMES ****************************************/
+.block_main .inner {
+    overflow: scroll;
+}
+.block_themes .themes .theme a {
+    position: relative;
+    display: block;
+    width: 80%;
+    margin: 0 auto;
+}
+.block_themes .themes .theme:first-child a {
+    margin-top: 1rem;
+}
+.block_themes .themes .theme .text {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    text-align: center;
+    color: #A69182;
+    font-size: 1.2rem;
+    padding-top: .3rem;
+}
 
 
 

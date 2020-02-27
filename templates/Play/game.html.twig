@@ -1,18 +1,36 @@
 {% extends 'base.html.twig' %}
 
-{% block body %}
-    {% for question in questions %}
-        {{ question.title }}
-    {% endfor %}
+{% block timer_solo %}
+    <figure class="timer_solo">
+        <img class="background" src="{{ asset('/build/images/inner2.png') }}" alt="">
+        <figure class="timer">
+            <img src="{{ asset('/build/images/timerSolo.gif') }}" alt="">
+        </figure>
+    </figure>
+{% endblock %}
 
-        {{ questions.title }}
-    {% for label, messages in app.flashes %}
-    {% for message in messages  %}
-        <div class="alert-{{ label }}">{{ message }}</div>
-    {% endfor %}
-    {% endfor %}
-    <div class="formulaire">
-        {{ form(form) }}
+{% block body %}
+    <div class="block_question">
+
+        <div class="second_header">
+            <figure class="image"><img src="{{ asset('/build/images/quitterJeu.png') }}" alt=""></figure>
+            <h2 class="h2_title">Nom du Thème :</h2>
+        </div>
+
+        {% for question in questions %}
+            {{ question.title }}
+        {% endfor %}
+
+            {{ questions.title }}
+        {% for label, messages in app.flashes %}
+        {% for message in messages  %}
+            <div class="alert-{{ label }}">{{ message }}</div>
+        {% endfor %}
+        {% endfor %}
+        <div class="formulaire">
+            {{ form(form) }}
+
+        </div>
 
     </div>
 {% endblock %}

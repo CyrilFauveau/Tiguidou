@@ -1,16 +1,21 @@
-{% extends 'base.html.twig' %}
+{% extends 'base_2.html.twig' %}
 {% block body %}
+    <div class="block_themes">
 
-    <div class="second_header">
-        <h2 class="h2_title">Choisissez un thème :</h2>
+        <div class="second_header">
+            <h2 class="h2_title">Choisissez un thème :</h2>
+        </div>
+
+        <ul class="themes">
+            {% for theme in theme %}
+                <li class="theme">
+                    <a href="{{ url('play_start', {"id": theme.id}) }}">
+                        <img src="{{ asset('/build/images/inner.png') }}" alt="">
+                        <p class="text">{{ theme.name }}</p>
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+
     </div>
-
-    <ul>
-        {% for theme in theme %}
-            <li>
-                <a href="{{ url('play_start', {"id": theme.id}) }}">{{ theme.name }}</a>
-            </li>
-        {% endfor %}
-    </ul>
-
 {% endblock %}
