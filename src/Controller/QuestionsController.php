@@ -67,9 +67,8 @@ class QuestionsController extends AbstractController
             return $random;
         }
 
-
         $getAllQuestions = $entityManager->getRepository(Questions::class)->findBy(['theme'=>$themeID]);
-
+        $user = $this->getUser();
         $random = randomQuestion(count($getAllQuestions));
 
         $getQuestion = $getAllQuestions[$random];
@@ -80,20 +79,41 @@ class QuestionsController extends AbstractController
         $form = $this->createForm(QuizzType::class, $getAnswer, $formOptions);
         $form->handleRequest($request);
 
+
+
+
         if ($form->isSubmitted() && $form->isValid()){
 
             if ($form->get('answer')->getData()->getAnswer() == $getQuestion->getCorrectAnswer()){
+
                 $this->addFlash('success',"Bonne réponse!");
+                $user->setScore($user->getScore()+ 5);
 
             }else{
                 $this->addFlash('error',"Mauvaise réponse !");
+                $user->setScore($user->getScore()+ 0);
 
             }
 
+            $entityManager->persist($user);
+            $entityManager->flush();
         }
 
         return $this->render('Play/game.html.twig',['questions'=>$getQuestion,'form'=>$form->createView()]);
     }
 
+
+    /**
+     * @Route("game/result", name="result_page", methods={"GET","POST"})
+     *
+     * @param Request $request
+     * @param EntityManagerInterface $entityManager
+     * @return Response
+     */
+
+    public function getResult(Request $request, EntityManagerInterface $entityManager){
+        return $this->render('Play/resultat.html.twig');
+
+    }
 
 }
