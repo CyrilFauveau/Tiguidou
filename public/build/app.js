@@ -34,16 +34,40 @@ __webpack_require__.r(__webpack_exports__);
 
 // console.log('Hello Webpack Encore! Edit me in assets/js/app.js');
         $(document).ready(function(){
-            $('#button-buy').click(function(){
-                var clickBtnValue = $(this).val();
-                var ajaxurl = 'shop',
-                    url = '{{path('shop')}}'
-                    data =  {'action': clickBtnValue};
-                $.post( data, function (response) {
-                    // Response div goes here.
-                    alert("action performed successfully");
-                });
-            });
+
+                if (document.getElementById('quizz')){
+
+                        if (sessionStorage.getItem("timer")){
+
+                            console.log('start');
+                            var counter = sessionStorage.getItem('timer');
+                            console.log(counter + 's');
+                        }else{
+                            console.log('stop');
+                            var counter = 60;
+                            sessionStorage.setItem('timer', counter);
+                        }
+
+                        var intervalId = setInterval(function () {
+                            counter--;
+                            console.log(counter);
+                            if (sessionStorage.getItem("timer")){
+                                sessionStorage.setItem('timer', counter);
+                            }
+
+                            if (counter == 0) finish();
+                        },1000);
+
+                        function finish() {
+                            clearInterval(intervalId);
+                            sessionStorage.clear();
+                            window.location = "http://127.0.0.1:8000/game/result";
+
+                        }
+
+
+                }
+
         });
 /***/ })
 

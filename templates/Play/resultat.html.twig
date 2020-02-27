@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h2>Page de resultats</h2>
+
+    <p>Votre score : {{  classement.score }}</p>
+
+    <p>+ Tant de pièce !</p>
+
+    <a href="{{ url('recap')}}">SUIVANT</a>
+{% endblock %}

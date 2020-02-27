@@ -20,6 +20,7 @@
         {% for question in questions %}
             {{ question.title }}
         {% endfor %}
+            Score : {{ app.user.score }}
 
             {{ questions.title }}
         {% for label, messages in app.flashes %}
@@ -27,9 +28,10 @@
             <div class="alert-{{ label }}">{{ message }}</div>
         {% endfor %}
         {% endfor %}
-        <div class="formulaire">
-            {{ form(form) }}
-
+        <div id="quizz">
+            <div class="formulaire">
+                {{ form(form) }}
+            </div>
         </div>
 
     </div>
