@@ -182,6 +182,9 @@ img {
     flex-flow: wrap;
     padding: 1rem 3rem;
 }
+.block_shop .items .alert-success {
+    text-align: center;
+}
 .block_shop .items .item {
     position: relative;
     width: 45%;
